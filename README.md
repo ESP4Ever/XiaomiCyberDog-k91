@@ -348,27 +348,29 @@ Tina: root / no pass
 
 # USB Download port
 
-L4T provides a USB bridge on the Jetson inside the dog. You can use it for IP communications, or serial <br>
+L4T provides a USB bridge on the Jetson inside the dog. You can use it for IP or serial communication <br>
 https://forums.developer.nvidia.com/t/ip-address-192-168-55-1/184273/4
 
 ```
 $ ls -al /dev/ttyACM0 
-crw-rw-rw- 1 root dialout 166, 0 Aug 16 01:20 /dev/ttyACM0
+  crw-rw-rw- 1 root dialout 166, 0 Aug 16 01:20 /dev/ttyACM0
+
 $ screen /dev/ttyACM0 115200
-[screen is terminating]
+  [screen is terminating]
+
 $ sudo ifconfig usb0 192.168.55.100
 $ ping 192.168.55.1
-PING 192.168.55.1 (192.168.55.1) 56(84) bytes of data.
-64 bytes from 192.168.55.1: icmp_seq=1 ttl=64 time=0.350 ms
-64 bytes from 192.168.55.1: icmp_seq=2 ttl=64 time=0.321 ms
-^C
---- 192.168.55.1 ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss, time 1019ms
-rtt min/avg/max/mdev = 0.321/0.335/0.350/0.014 ms
+  PING 192.168.55.1 (192.168.55.1) 56(84) bytes of data.
+  64 bytes from 192.168.55.1: icmp_seq=1 ttl=64 time=0.350 ms
+  64 bytes from 192.168.55.1: icmp_seq=2 ttl=64 time=0.321 ms
+  ^C
+  --- 192.168.55.1 ping statistics ---
+  2 packets transmitted, 2 received, 0% packet loss, time 1019ms
+  rtt min/avg/max/mdev = 0.321/0.335/0.350/0.014 ms
 ```
 
 Alternately if you plug a USB adapter into the extension port, you need to 
-edit th e/etc/netplan/01-netcfg.yaml file to get DHCP
+edit /etc/netplan/01-netcfg.yaml file to get DHCP
 
 ```
 mi@lubuntu:/etc/netplan$ sudo pico 01-netcfg.yaml
@@ -383,9 +385,7 @@ network:
 mi@lubuntu:/etc/netplan$ sudo netplan try 
 Do you want to keep these settings?
 
-
 Press ENTER before the timeout to accept the new configuration
-
 
 Changes will revert in 118 seconds
 Configuration accepted.
